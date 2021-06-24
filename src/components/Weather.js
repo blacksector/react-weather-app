@@ -40,7 +40,7 @@ export default function Weather() {
         }
         // Get last updated and then refresh if data is older than 5 minutes
         let lastUpdated = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY + '.LastUpdated'));
-        if (lastUpdated && (new Date() - lastUpdated) >= 300*1000) {
+        if (lastUpdated && (new Date() - lastUpdated) >= 300*1000 && citiesData.length !== 0) {
             refreshAll(this, citiesData);
         }
         
