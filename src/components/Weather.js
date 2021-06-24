@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CityInput from './CityInput';
 import CityList from './CityList';
 
-const IP_ADDRESS_LOCATION_ENDPOINT = 'http://ip-api.com/json/';
+const IP_ADDRESS_LOCATION_ENDPOINT = 'https://ipapi.co/json/';
 const WEATHER_ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather';
 const WEATHER_API_KEY = '99b84d8baf9a2dbccdcf348d52979b99';
 const WEATHER_STORAGE_KEY = 'weatherApp.Storage';
@@ -17,7 +17,6 @@ const UNITS = 'metric';
 export default function Weather() {
 
     const [cities, setCities] = useState([]);
-    const [showCurrentButton, setShowCurrentButton] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     const handleClose = () => setShowModal(false);
@@ -28,11 +27,6 @@ export default function Weather() {
     // Best way I think would be to set an interval and update every 
     // X minutes, etc.
     useEffect(() => {
-        // Disable the get current location button if
-        // geolocation isn't possible in device / browser
-        if (navigator.geolocation) {
-            setShowCurrentButton(true)
-        }
         // Get cities in storage and save to state
         let citiesData = JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY + ".Cities"));
         if (citiesData) {
@@ -93,12 +87,7 @@ export default function Weather() {
         <>
             Click "DELETE" to remove the list of cities.
             <Button variant="link" onClick={deleteCities}>DELETE</Button>
-        </>, 
-        {
-            // hook will be called when the component unmount
-            onClose: () => { if (cities.length === 0) { notify("You didn't click anything, so we didn't remove anything."); } }
-        });
-        //setCities()
+        </>);
     }
 
     async function getCityWeather(city = null) {
@@ -158,7 +147,7 @@ export default function Weather() {
                     // this isn't accurate but it works:
                     return get(IP_ADDRESS_LOCATION_ENDPOINT)
                         .then((result) => {
-                            url += `?lat=${result.lat}&lon=${result.lon}&units=${UNITS}&appid=${WEATHER_API_KEY}`;
+                            url += `?lat=${result.latitude}&lon=${result.longitude}&units=${UNITS}&appid=${WEATHER_API_KEY}`;
                             return get(url).then(data => {
                                 if (data.cod !== 200) {
                                     notify(data.message);
@@ -184,7 +173,7 @@ export default function Weather() {
             // Geolocation isn't possible on this device:
             return get(IP_ADDRESS_LOCATION_ENDPOINT)
                 .then((result) => {
-                    url += `?lat=${result.lat}&lon=${result.lon}&units=${UNITS}&appid=${WEATHER_API_KEY}`;
+                    url += `?lat=${result.latitude}&lon=${result.longitude}&units=${UNITS}&appid=${WEATHER_API_KEY}`;
                     return get(url).then(data => {
                         if (data.cod !== 200) {
                             notify(data.message);

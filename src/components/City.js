@@ -31,7 +31,7 @@ export default function City({ city }) {
                 }}>
                     <Accordion.Toggle id={bg} as={Button} variant="link" eventKey={city.id}>
                         <div class="left">
-                            <img src={'http://openweathermap.org/img/wn/' + city.weather[0].icon + '.png'} />
+                            <img src={'https://openweathermap.org/img/wn/' + city.weather[0].icon + '.png'} />
                             <div class="subLeft">
                                 <span>{moment().utc().add(city.timezone, 'seconds').format('LT')}</span>
                                 <span class="cityName">{city.name}</span>
