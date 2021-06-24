@@ -5,7 +5,6 @@ import moment from 'moment';
 
 export default function City({ city }) {
     let bg = "";
-    let timezone = moment()
     if (city.weather[0].icon.indexOf('n') !== -1) {
         bg = 'night'
     } else {
@@ -16,14 +15,15 @@ export default function City({ city }) {
             <Card>
                 <Card.Header class="card-bg" style={{
                         background: 'url("' + bg + '_cropped.png")',
-                        backgroundSize: 'contain',
-                        backgroundPosition: 'center'
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat'
                     }}>
                     <Accordion.Toggle id={bg} as={Button} variant="link" eventKey={city.id}>
                         <div class="left">
                             <img src={'http://openweathermap.org/img/wn/' + city.weather[0].icon + '.png'} />
                             <div class="subLeft">
-                                <span>{moment().utc().subtract(city.timezone * -1, 'seconds').format('LT')}</span>
+                                <span>{moment().utc().add(city.timezone, 'seconds').format('LT')}</span>
                                 <span class="cityName">{city.name}</span>
                             </div>
                         </div>

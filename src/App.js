@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Weather from './components/Weather';
+import Footer from './components/Footer';
 // import FirstTime from './components/FirstTime';
 import React, { useState, useEffect } from 'react';
 
@@ -24,6 +24,7 @@ function App() {
       
       {showFirstTime === false && <Header />}
       {showFirstTime === false && <Weather />}
+      {!showFirstTime && <Footer />}
       {/* {showFirstTime === true && <FirstTime onClick={(v) => setShowFirstTime(false)} />} */}
     </>
   );

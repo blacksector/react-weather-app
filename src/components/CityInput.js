@@ -11,12 +11,17 @@ export default function CityInput(props) {
                     <Form.Label>City Name</Form.Label>
                     <Form.Control value={cityName} onChange={e => setCityName(e.target.value)} type="text" placeholder="Enter your city" />
                 </Form.Group>
-                <Button
+                <Button size="lg" block
                     onClick={e => {
                         props.onSubmitCity(cityName)
                         .then(resp => resp ? setCityName('') : null);
                     }}
                 >Save</Button>
+                <div class="separator">OR</div>
+                <Button block
+                    onClick={e => props.onGetCurrentLocation(cityName)}
+                >Get Current Location</Button>
+
             </Form>
         </>
     )
