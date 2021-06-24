@@ -5,18 +5,18 @@ import Footer from './components/Footer';
 // import FirstTime from './components/FirstTime';
 import React, { useState, useEffect } from 'react';
 
-const WEATHER_APP_STORAGE = 'weatherApp.Storage';
+const WEATHER_STORAGE_KEY = 'weatherApp.Storage';
 
 function App() {
 
   const [showFirstTime, setShowFirstTime] = useState(false);
 
   useEffect(() => {
-    setShowFirstTime(JSON.parse(localStorage.getItem(WEATHER_APP_STORAGE + ".showFirstTime") || true));
+    setShowFirstTime(JSON.parse(localStorage.getItem(WEATHER_STORAGE_KEY + ".showFirstTime") || false));
   }, [])
 
   useEffect(() => {
-      localStorage.setItem(WEATHER_APP_STORAGE + ".showFirstTime", showFirstTime);
+      localStorage.setItem(WEATHER_STORAGE_KEY + ".showFirstTime", showFirstTime);
   }, [showFirstTime])
 
   return (

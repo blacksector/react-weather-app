@@ -2,6 +2,16 @@
     background: #222 !important;
 }
 
+.display-5 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.weatherBody {
+    line-height: 1;
+}
+
 .accordion {
     margin-bottom: 5em;
     display: flex;
@@ -46,7 +56,17 @@
 }
 
 .accordion .btn-link .right {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion .btn-link .right > span:first-child {
     font-size: 2.2em;
+    font-weight: 300;
+}
+
+.accordion .btn-link .right > span:last-child {
+    font-size: 0.8em;
 }
 
 .accordion .btn-link:hover,
@@ -83,6 +103,7 @@
     max-height: 100px;
     max-width: 750px;
     width: 100%;
+    display: flex;
 }
 
 .modal-content {
