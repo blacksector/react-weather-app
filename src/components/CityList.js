@@ -15,7 +15,7 @@ export default function CityList({cities}) {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <p class="lead text-center">Please add a city first!</p>
+                        <p class="lead text-center text-light">Please add a city first!</p>
                     </div>
                     
                 </>
