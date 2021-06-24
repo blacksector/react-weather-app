@@ -57,6 +57,11 @@ export default function Weather() {
 
     async function getCityWeather(city = null) {
         let url = `${WEATHER_ENDPOINT}`;
+        // search if the city exists first:
+        if (cities.filter(c => city === c.name).length !== 0) {
+            notify('Seems like you already have this city in your list');
+            return;
+        }
         if (city !== null && `${city}`.length !== 0) {
             // Retrieve weather data based on city:
             url += `?q=${city}&units=${UNITS}&appid=${WEATHER_API_KEY}`;

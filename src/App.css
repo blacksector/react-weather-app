@@ -3,5 +3,76 @@
 }
 
 .accordion .btn-link {
-    color: black !important;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion #night {
+    color: white !important;
+}
+
+.accordion #after_noon {
+    color: #222 !important;
+}
+
+.accordion .btn-link .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.accordion .btn-link .subLeft {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.accordion .btn-link .subLeft .cityName {
+    font-size: 1.1em;
+}
+
+.accordion .btn-link .right {
+    font-size: 2.2em;
+}
+
+.accordion .btn-link:hover,
+.accordion .btn-link:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+.accordion .card {
+    border-radius: 0;
+    border: 0;
+    border-top: 0.5px solid lightgrey;
+    border-bottom: 0.5px solid lightgrey; 
+}
+
+.accordion .card:first-child {
+    border-top: 0;
+}
+
+.accordion .card:last-child {
+    border-bottom: 0;
+}
+
+.accordion .card-header {
+    background-color: white;
+    border: 0;
+}
+
+.card-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1em;
+    max-height: 100px;
+}
+
+.accordion {
+    margin-bottom: 5em;
 }
